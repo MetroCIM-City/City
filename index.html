@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1" />
+    <title>campus Albano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <div id="loader">Loading campus…</div>
+
+    <button type="button" id="back-btn" class="back-button" aria-label="Back">
+      <span class="material-icons">arrow_back</span>
+    </button>
+
+    <nav id="nav" class="nav" aria-label="Campus categories">
+      <div id="accordion"></div>
+    </nav>
+    <button type="button" id="menu-btn" class="menu-button" aria-label="menu">
+      <span class="material-icons">menu</span>
+    </button>
+
+    <div id="article-dialog" class="article-dialog" hidden>
+      <div class="article-dialog__sheet" role="dialog" aria-modal="true" aria-labelledby="article-title">
+        <button type="button" id="article-close" class="article-dialog__close" aria-label="close">
+          <span class="material-icons">close</span>
+        </button>
+        <h1 id="article-title"></h1>
+        <p id="article-body"></p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

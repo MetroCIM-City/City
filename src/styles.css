@@ -1,0 +1,251 @@
+:root {
+  --nav: 250px;
+  --bar: 8px;
+  --ink: rgba(0, 0, 0, 0.87);
+  --muted: rgba(0, 0, 0, 0.54);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  font: 15px/1.4 Roboto, "Helvetica Neue", sans-serif;
+}
+
+#view {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  cursor: grab;
+}
+
+#view:active {
+  cursor: grabbing;
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+#loader[hidden] {
+  display: none;
+}
+
+.back-button,
+.menu-button {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 1px 5px rgba(0, 0, 0, 0.12);
+  display: grid;
+  place-items: center;
+}
+
+.back-button {
+  left: 0;
+  z-index: 5;
+}
+
+.menu-button {
+  left: 250px;
+  top: 0;
+  margin: 0;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: var(--nav);
+  max-height: 100vh;
+  overflow: auto;
+  padding-top: 0;
+  transition: transform 0.22s ease;
+}
+
+.nav.is-collapsed {
+  transform: translateX(-250px);
+}
+
+.nav.is-collapsed + .menu-button {
+  left: 0;
+}
+
+.panel {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.14), 0 1px 5px rgba(0, 0, 0, 0.12);
+}
+
+.panel + .panel {
+  margin-top: 0;
+}
+
+.panel__color {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--bar);
+  height: 48px;
+}
+
+.panel__header {
+  width: 100%;
+  height: 48px;
+  padding: 0 72px 0 20px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font: 15px/48px Roboto, "Helvetica Neue", sans-serif;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.panel:first-child .panel__header {
+  padding-left: 56px;
+}
+
+.panel__eye,
+.panel__chevron {
+  position: absolute;
+  top: 4px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.panel__eye {
+  right: 40px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.panel__eye.is-off {
+  color: #bdbdbd;
+}
+
+.panel__chevron {
+  right: 4px;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.panel.is-open .panel__chevron {
+  transform: rotate(180deg);
+}
+
+.panel__body {
+  display: none;
+  padding: 0 0 8px;
+}
+
+.panel.is-open .panel__body {
+  display: block;
+}
+
+.panel__item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 8px 16px 8px 24px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.panel__item .material-icons {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.panel__item:hover,
+.panel__item.is-active {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.article-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 24px;
+}
+
+.article-dialog[hidden] {
+  display: none;
+}
+
+.article-dialog__sheet {
+  position: relative;
+  width: min(660px, 100%);
+  max-height: min(621px, calc(100vh - 48px));
+  overflow: auto;
+  background: #fff;
+  padding: 32px 32px 28px;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14);
+}
+
+.article-dialog__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.article-dialog h1 {
+  margin: 0 0 16px;
+  font: 400 32px/1.2 Roboto, "Helvetica Neue", sans-serif;
+}
+
+.article-dialog p {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .nav {
+    max-height: 48vh;
+  }
+
+  .article-dialog__sheet {
+    padding: 28px 18px 20px;
+  }
+}

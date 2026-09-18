@@ -1,0 +1,13 @@
+---
+description: Campus Albano 3D viewer recreation
+alwaysApply: true
+---
+
+# Campus Albano
+
+Rebuild [campus Albano](https://campusalbano.se/view/all) as a Babylon.js viewer. Match the light architectural model, left category accordion, colored POI markers, and article dialog.
+
+- Left pan, right rotate, scroll zoom
+- Categories: Welcome, University facilities, Student Housing, Sustainability, Webcams, Pictures, Places, Read more
+- Eye icon toggles that category’s markers
+- Clicking a list item or marker opens the article dialog
