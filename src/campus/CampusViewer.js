@@ -17,9 +17,16 @@ import {
   ExecuteCodeAction,
   AppendSceneAsync,
 } from "@babylonjs/core";
+import { DracoDecoder } from "@babylonjs/core/Meshes/Compression/dracoDecoder.js";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader.js";
 import "@babylonjs/loaders/glTF/2.0/Extensions/KHR_draco_mesh_compression.js";
 import { allItems } from "../data/campus.js";
+
+DracoDecoder.DefaultConfiguration = {
+  wasmUrl: "/assets/draco/draco_wasm_wrapper_gltf.js",
+  wasmBinaryUrl: "/assets/draco/draco_decoder_gltf.wasm",
+  fallbackUrl: "/assets/draco/draco_decoder_gltf.js",
+};
 
 function markerTexture(scene, hex) {
   const tex = new DynamicTexture(`poi-tex-${hex}-${Math.random()}`, { width: 128, height: 128 }, scene, false);
